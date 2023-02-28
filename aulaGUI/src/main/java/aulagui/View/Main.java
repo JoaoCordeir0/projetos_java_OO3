@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package aulagui.View;
 
 import javax.swing.JOptionPane;
@@ -17,6 +13,9 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        
+        jTableAluno.setModel(new AlunoModel());
+        
     }
 
     /**
@@ -28,6 +27,8 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableAluno = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuCadastrar = new javax.swing.JMenu();
         jMenuItemCadastrar = new javax.swing.JMenuItem();
@@ -36,6 +37,19 @@ public class Main extends javax.swing.JFrame {
         jMenuSobre = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTableAluno.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTableAluno);
 
         jMenuCadastrar.setText("Arquivo");
 
@@ -77,11 +91,17 @@ public class Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(188, 188, 188))
         );
 
         pack();
@@ -143,5 +163,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemListar;
     private javax.swing.JMenuItem jMenuItemProcurar;
     private javax.swing.JMenu jMenuSobre;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableAluno;
     // End of variables declaration//GEN-END:variables
 }
