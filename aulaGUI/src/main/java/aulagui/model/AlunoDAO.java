@@ -13,25 +13,23 @@ public class AlunoDAO {
     public AlunoDAO(){
         if(alunos==null){
             alunos = new ArrayList<>();
-        }
-        
+        }        
     }
     
     public boolean insere(Aluno aluno){
-        return alunos.add(aluno);
-                
+        return alunos.add(aluno);                
     }
     
     public Aluno getAluno(String ra){
         Aluno procurado = null;
         //Dado o Ra, busque o aluno
         
-        /*Metodo Ineficiente*/
+        /*Metodo Ineficiente
         for(int i=0; i<alunos.size(); i++){
             if(alunos.get(i).getRa().equals(ra)){
                 procurado = alunos.get(i);
             }   
-        }
+        }*/
         
         /*Metodo Eficiente*/
         Iterator<Aluno> obj = alunos.iterator();
@@ -41,14 +39,11 @@ public class AlunoDAO {
                 procurado = aluno;
             }
             
-        }
-        
-        return procurado;
-        
+        }        
+        return procurado;        
     }
     
     public List<Aluno> getAllAlunos(){
         return alunos;
-    }
-    
+    }    
 }

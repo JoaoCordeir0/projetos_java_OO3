@@ -12,10 +12,7 @@ public class Main extends javax.swing.JFrame {
      * Creates new form Main
      */
     public Main() {
-        initComponents();
-        
-        jTableAluno.setModel(new AlunoModel());
-        
+        initComponents();                      
     }
 
     /**
@@ -27,8 +24,6 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTableAluno = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuCadastrar = new javax.swing.JMenu();
         jMenuItemCadastrar = new javax.swing.JMenuItem();
@@ -37,19 +32,6 @@ public class Main extends javax.swing.JFrame {
         jMenuSobre = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jTableAluno.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTableAluno);
 
         jMenuCadastrar.setText("Arquivo");
 
@@ -68,6 +50,11 @@ public class Main extends javax.swing.JFrame {
 
         jMenuItemListar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.ALT_DOWN_MASK));
         jMenuItemListar.setText("Listar Alunos");
+        jMenuItemListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemListarActionPerformed(evt);
+            }
+        });
         jMenuCadastrar.add(jMenuItemListar);
 
         jMenuBar1.add(jMenuCadastrar);
@@ -91,24 +78,19 @@ public class Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(188, 188, 188))
+            .addGap(0, 281, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastrarActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:        
+        (new CadastraAluno()).setVisible(true);
     }//GEN-LAST:event_jMenuItemCadastrarActionPerformed
 
     private void jMenuSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSobreActionPerformed
@@ -120,6 +102,10 @@ public class Main extends javax.swing.JFrame {
     private void jMenuSobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSobreMouseClicked
          JOptionPane.showMessageDialog(rootPane,"Aula GUI - Versão beta1");
     }//GEN-LAST:event_jMenuSobreMouseClicked
+
+    private void jMenuItemListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListarActionPerformed
+        (new ListarAluno()).setVisible(true);
+    }//GEN-LAST:event_jMenuItemListarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,7 +149,5 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemListar;
     private javax.swing.JMenuItem jMenuItemProcurar;
     private javax.swing.JMenu jMenuSobre;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableAluno;
     // End of variables declaration//GEN-END:variables
 }

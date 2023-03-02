@@ -1,7 +1,7 @@
 package aulagui.View;
 
+import aulagui.Controller.Controller;
 import aulagui.model.Aluno;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -13,13 +13,16 @@ import javax.swing.table.AbstractTableModel;
 public class AlunoModel extends AbstractTableModel {
 
     String colunas[] = {"Nome", "RA"};
-    List<Aluno>alunos = new ArrayList();
-    
+    List<Aluno>alunos; /*= new ArrayList();*/
+        
     public AlunoModel(){
+        /*
         alunos.add(new Aluno("João Victor Cordeiro", "27099-5"));
         alunos.add(new Aluno("Lucas Gabryel", "12345-5"));
         alunos.add(new Aluno("Henrique Magnoli", "67890-5"));
-    }
+        */
+        alunos = Controller.getAlunos();                        
+    }    
     
     @Override
     public int getRowCount() {
@@ -50,7 +53,5 @@ public class AlunoModel extends AbstractTableModel {
     @Override
     public String getColumnName(int column) {
         return colunas[column];
-    }
-    
-    
+    }       
 }

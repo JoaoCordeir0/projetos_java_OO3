@@ -34,11 +34,4 @@ public class Aluno {
     public void setRa(String ra) {
         this.ra = ra;
     }
-
-    boolean add(Aluno alunos) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
-    
-    
 }
