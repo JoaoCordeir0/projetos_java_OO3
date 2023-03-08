@@ -17,7 +17,7 @@ public class Reader {
 
         FileReader file = null;
         try {
-            file = new FileReader("entrada.txt");
+            file = new FileReader("Alunos.txt");
             Scanner leitor = new Scanner(file);
             // Enquanto houver dados no arquivo
             while (leitor.hasNext()) {
