@@ -1,12 +1,14 @@
 package aulagui.model;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,7 +20,43 @@ public class AlunoDAO {
     
     public AlunoDAO(){
         if(alunos==null){
-            alunos = new ArrayList<>();
+            FileReader file = null;
+            try {
+                alunos = new ArrayList<>();
+                file = new FileReader("Alunos.txt");
+                Scanner leitor = new Scanner(file);
+                /*
+                while (leitor.hasNext())
+                {
+                dado += leitor.nextLine() + '#';
+                }
+                String[] valores = dado.split("#");
+                
+                for (int c = 0; c < valores.length; c=c+2)
+                {
+                Aluno aluno = new Aluno(valores[c], valores[c + 1]);
+
+                alunos.add(aluno);
+                }
+                */
+                
+                // Enquanto houver dados no arquivo
+                while (leitor.hasNext())
+                {
+                    String nome = leitor.nextLine();
+                    String ra = leitor.nextLine();
+                    Aluno aluno = new Aluno(nome, ra);
+                    alunos.add(aluno);
+                }   leitor.close();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(AlunoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                try {
+                    file.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(AlunoDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }        
     }
     
