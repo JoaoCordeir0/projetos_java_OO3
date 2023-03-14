@@ -31,6 +31,8 @@ public class AulaDB {
             comand.executeUpdate(
                     "INSERT INTO Aluno (nome, ra) VALUES ('João Victor Cordeiro', '27099-5')"
             );
+            comand.close();
+            conn.close();
             
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(AulaDB.class.getName()).log(Level.SEVERE, null, ex);        
