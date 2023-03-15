@@ -15,27 +15,45 @@ public class AulaDB {
 
     public static void main(String[] args) {
         
-        try {
+        Statement comand = null;
+        Connection conn = null;                
+        
+        try 
+        {
             // Subir o driver para oso - MYSQL
             Class.forName("com.mysql.cj.jdbc.Driver");
-            
+
             // Tentar conectar
-            Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/aula_database", 
-                    "root", 
+            conn = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/aula_database",
+                    "root",
                     "1234"
-            );            
-            
-            //Inserção no banco            
-            Statement comand = conn.createStatement();
-            comand.executeUpdate(
-                    "INSERT INTO Aluno (nome, ra) VALUES ('João Victor Cordeiro', '27099-5')"
             );
-            comand.close();
-            conn.close();
-            
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(AulaDB.class.getName()).log(Level.SEVERE, null, ex);        
+
+            //Inserção no banco            
+            comand = conn.createStatement();
+
+            for (int c = 0; c < 1000; c++) {
+                comand.executeUpdate(
+                        "INSERT INTO Aluno (nome, ra) VALUES ('João Victor Cordeiro " + c + "', '" + c + "')"
+                );
+            }            
+        } 
+        catch (ClassNotFoundException | SQLException ex) 
+        {
+            Logger.getLogger(AulaDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally
+        {
+            try 
+            {
+                comand.close();
+                conn.close();
+            } 
+            catch (SQLException ex) 
+            {
+                Logger.getLogger(AulaDB.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 }
