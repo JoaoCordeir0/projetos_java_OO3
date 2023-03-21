@@ -1,5 +1,5 @@
-create database aula_database;
-use aula_database;
+create database aula_database_java;
+use aula_database_java;
 
 create table Aluno(
     id int primary key auto_increment not null,

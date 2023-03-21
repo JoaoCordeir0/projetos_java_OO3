@@ -28,9 +28,9 @@ public class AlunoDAO {
 
             // Tentar conectar
             conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/aula_database",
+                    "jdbc:mysql://localhost:3306/aula_database_java",
                     "root",
-                    "1234"
+                    ""
             );
 
             if (alunos == null) {
@@ -60,9 +60,9 @@ public class AlunoDAO {
 
         // Tentar conectar
         conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/aula_database",
+                "jdbc:mysql://localhost:3306/aula_database_java",
                 "root",
-                "1234"
+                ""
         );
 
         comand.executeUpdate(
