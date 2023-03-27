@@ -1,7 +1,7 @@
 package auladb.Controller;
 
-import auladb.model.AlunoDAO;
-import auladb.model.Aluno;
+import auladb.Model.AlunoDAO;
+import auladb.Model.Aluno;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;

@@ -1,7 +1,7 @@
 package auladb.View;
 
 import auladb.Controller.Controller;
-import auladb.model.Aluno;
+import auladb.Model.Aluno;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
