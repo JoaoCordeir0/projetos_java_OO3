@@ -1,6 +1,10 @@
 package view;
 
 import controller.ClienteController;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -254,12 +258,22 @@ public class CadCli extends javax.swing.JFrame {
         
         if (tipoCli.equals("fisico"))
         {
-            // Ler os dados do painel do cliente fisico
-            String rg = jTextRG.getText();
-            String cpf = jTextCPF.getText();
-            String sexo = jComboSexo.getSelectedItem().toString();
-            
-            //
+            try {
+                // Ler os dados do painel do cliente fisico
+                String rg = jTextRG.getText();
+                String cpf = jTextCPF.getText();
+                String sexo = jComboSexo.getSelectedItem().toString();
+                
+                // Executa o método da controller
+                controller.insereClienteFisico(nome, rg, cpf, sexo);
+                
+                // Mensagem de sucesso
+                JOptionPane.showMessageDialog(rootPane, "Dados gravados com sucesso!");
+                
+            } catch (ClassNotFoundException | SQLException ex) {                
+                JOptionPane.showMessageDialog(rootPane, "Erro ao gravar informações. Detalhes: " + ex);
+                Logger.getLogger(CadCli.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jButtonGravarActionPerformed
 

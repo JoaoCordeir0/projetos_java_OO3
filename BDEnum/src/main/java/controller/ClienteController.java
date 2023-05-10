@@ -17,23 +17,23 @@ import persist.ClienteDAO;
 public class ClienteController {
 
     private ClienteDAO dao = null;
-    
-    public ClienteController (){
-           dao =new ClienteDAO();
+
+    public ClienteController() {
+        dao = new ClienteDAO();
     }
-    
-    public void insereClienteFisico(String nome,
-            String rg, String cpf, String sexo)
-            throws ClassNotFoundException, SQLException{
-         
-        //instanciar o cliente físico com seus dados
-        
-         ClienteFisico cliente = 
-                 new ClienteFisico(rg, cpf, 
-                         sexo.equals("feminino")?Sexo.FEMININO:Sexo.MASCULINO,
-                         nome);
-         //chamada da inserção em DAO
-         dao.insere(cliente);
+
+    public void insereClienteFisico(String nome, String rg, String cpf, String sexo) throws ClassNotFoundException, SQLException {
+
+        //instanciar o cliente físico com seus dados        
+        ClienteFisico cliente = new ClienteFisico(
+                rg,
+                cpf,
+                sexo.equals("feminino") ? Sexo.FEMININO : Sexo.MASCULINO,
+                nome
+        );
+
+        //chamada da inserção em DAO
+        dao.insere(cliente);
     }
-    
+
 }
