@@ -1,0 +1,8 @@
+persist\FabricaDeConexao.class
+model\ClienteJuridico.class
+model\Cliente.class
+model\ClienteFisico.class
+com\mycompany\bdenum\view\Principal$1.class
+com\mycompany\bdenum\view\Principal.class
+persist\ClienteDAO.class
+model\Sexo.class
