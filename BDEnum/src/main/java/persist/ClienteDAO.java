@@ -18,8 +18,7 @@ import model.ClienteJuridico;
  */
 public class ClienteDAO {
     
-    public void insere(Cliente cliente) 
-            throws ClassNotFoundException, SQLException{
+    public void insere(Cliente cliente) throws ClassNotFoundException, SQLException{
         
         //preparar a conexao e comandos para gravar
         //os dados no banco de dados
@@ -31,26 +30,22 @@ public class ClienteDAO {
         //o tipo de cliente
         if(cliente instanceof ClienteFisico){
             comando = conexao.prepareStatement(
-            "insert into Cliente(nome,rg,cpf,sexo,tipo) "
-                    + "values(?,?,?,?,?)");
+            "insert into cliente(nome,rg,cpf,sexo,tipo) values(?,?,?,?,?)");
             
             //colocando os dados lidos do cliente
             comando.setString(1,cliente.getNome());
             comando.setString(2,((ClienteFisico)cliente).getRg());
             comando.setString(3,((ClienteFisico)cliente).getCpf());
-            comando.setString(4,((ClienteFisico)cliente).getSexo()
-                    .toString());
+            comando.setString(4,((ClienteFisico)cliente).getSexo().toString());
             comando.setInt(5,1); //1 será fisico e 2 - juridico
         }
         else{
           comando = conexao.prepareStatement(
-            "insert into Cliente(nome,cnpj,tipo) "
-                    + "values(?,?,?)");
+            "insert into cliente(nome,cnpj,tipo) values(?,?,?)");
             
             //colocando os dados lidos do cliente
             comando.setString(1,cliente.getNome());
-            comando.setString(2,((ClienteJuridico)cliente)
-                    .getCnpj());
+            comando.setString(2,((ClienteJuridico)cliente).getCnpj());
             comando.setInt(3,2); //1 será fisico e 2 - juridico
             
         }

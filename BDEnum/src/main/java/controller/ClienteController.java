@@ -7,6 +7,7 @@ package controller;
 
 import java.sql.SQLException;
 import model.ClienteFisico;
+import model.ClienteJuridico;
 import model.Sexo;
 import persist.ClienteDAO;
 
@@ -29,6 +30,18 @@ public class ClienteController {
                 rg,
                 cpf,
                 sexo.equals("feminino") ? Sexo.FEMININO : Sexo.MASCULINO,
+                nome
+        );
+
+        //chamada da inserção em DAO
+        dao.insere(cliente);
+    }
+    
+    public void insereClienteJuridico(String nome, String cnpj) throws ClassNotFoundException, SQLException {
+
+        //instanciar o cliente físico com seus dados        
+        ClienteJuridico cliente = new ClienteJuridico(
+                cnpj,
                 nome
         );
 

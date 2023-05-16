@@ -29,19 +29,29 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuCadastro = new javax.swing.JMenuItem();
+        jMenuSair = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jMenu1.setText("Arquivo");
 
-        jMenuItem1.setText("Cadastrar Clientes");
-        jMenu1.add(jMenuItem1);
+        jMenuCadastro.setText("Cadastrar Clientes");
+        jMenuCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCadastroActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuCadastro);
 
-        jMenuItem2.setText("Sair");
-        jMenu1.add(jMenuItem2);
+        jMenuSair.setText("Sair");
+        jMenuSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuSairActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuSair);
 
         jMenuBar1.add(jMenu1);
 
@@ -63,6 +73,16 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCadastroActionPerformed
+        // Chama a janela de cadastro de cliente 
+        new CadCli().setVisible(true);
+    }//GEN-LAST:event_jMenuCadastroActionPerformed
+
+    private void jMenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSairActionPerformed
+        // Encerra a aplicação
+        System.exit(0);
+    }//GEN-LAST:event_jMenuSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -103,7 +123,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuCadastro;
+    private javax.swing.JMenuItem jMenuSair;
     // End of variables declaration//GEN-END:variables
 }

@@ -60,7 +60,7 @@ public class CadCli extends javax.swing.JFrame {
         jButtonGravar = new javax.swing.JButton();
         jButtonVoltar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do cliente"));
 
@@ -166,6 +166,11 @@ public class CadCli extends javax.swing.JFrame {
         });
 
         jButtonVoltar.setText("Voltar");
+        jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVoltarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -256,26 +261,41 @@ public class CadCli extends javax.swing.JFrame {
         // Obter a opção selecionada sobre o tipo do cliente
         String tipoCli = tipoCliente.getSelection().getActionCommand();
         
-        if (tipoCli.equals("fisico"))
-        {
-            try {
-                // Ler os dados do painel do cliente fisico
-                String rg = jTextRG.getText();
-                String cpf = jTextCPF.getText();
-                String sexo = jComboSexo.getSelectedItem().toString();
-                
-                // Executa o método da controller
-                controller.insereClienteFisico(nome, rg, cpf, sexo);
-                
-                // Mensagem de sucesso
-                JOptionPane.showMessageDialog(rootPane, "Dados gravados com sucesso!");
-                
-            } catch (ClassNotFoundException | SQLException ex) {                
-                JOptionPane.showMessageDialog(rootPane, "Erro ao gravar informações. Detalhes: " + ex);
-                Logger.getLogger(CadCli.class.getName()).log(Level.SEVERE, null, ex);
+        try {
+            switch (tipoCli)
+            {
+                case "fisico":                
+                    // Ler os dados do painel do cliente fisico
+                    String rg = jTextRG.getText();
+                    String cpf = jTextCPF.getText();
+                    String sexo = jComboSexo.getSelectedItem().toString();
+
+                    // Executa o método da controller
+                    controller.insereClienteFisico(nome, rg, cpf, sexo);
+
+                    // Mensagem de sucesso
+                    JOptionPane.showMessageDialog(rootPane, "Dados gravados com sucesso!");               
+                break;
+                case "juridico":                
+                         // Leitura dos dados do cliente juridico
+                        String cnpj = jTextCNPJ.getText();
+
+                        // Executa o método da controller
+                        controller.insereClienteJuridico(nome, cnpj);                                               
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(rootPane, "Tipo do cliente inválido");
+                    break;                
             }
+        } catch (ClassNotFoundException | SQLException ex) {                
+            JOptionPane.showMessageDialog(rootPane, "Erro ao gravar informações. Detalhes: " + ex);
+            Logger.getLogger(CadCli.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonGravarActionPerformed
+
+    private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     /**
      * @param args the command line arguments
